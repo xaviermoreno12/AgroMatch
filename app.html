@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGROMATCH | Find Your Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Public+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400;0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/matchmaking.css">
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="material-symbols-outlined logo-icon">agriculture</span>
+      <span class="logo-text">AGROMATCH</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html"     class="nav-link">MARKET</a>
+      <a href="app.html"       class="nav-link active">MATCH</a>
+      <a href="dashboard.html" class="nav-link">DASHBOARD</a>
+    </nav>
+    <div class="header-actions">
+      <div class="avatar">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1UFGFGkVXo7VUcEC1IpnyuBd3UM7V8sjBRvP-bKQKzwq0MnIhiHf9MFzPmd1i07saZ91jc27jNYS9WOXPKJrhOHnagdW-GSwcRx-cQOAHgqpayEcMYTSgGgkhwCaHOnFi-N2T41msM3ZEa6a1G2dYUZ7L4sk96xZFFOxkWGfOhen78U74It-KouM56ztQ0bOW9q7CayjJ8_gjKtWj35Ef8PfhTUYou5WGPXu0W5ZjxrtFk5y17SLWy_XT4IKNeyNyKf0OiB6U0FE" alt="User avatar">
+      </div>
+    </div>
+  </header>
+
+  <!-- ── NAVIGATION DRAWER (DESKTOP) ───────────────────────────────────── -->
+  <aside class="nav-drawer">
+    <div class="nav-drawer-header">
+      <div class="nav-drawer-user">
+        <div class="nav-drawer-avatar">
+          <span class="material-symbols-outlined" style="color:#fff;">person</span>
+        </div>
+        <div>
+          <p class="nav-drawer-name">Heavy Duty Ops</p>
+          <p class="nav-drawer-role">Premium Member</p>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-drawer-items">
+      <a href="app.html#" class="nav-drawer-link">
+        <span class="material-symbols-outlined">list_alt</span> Inventory
+      </a>
+      <a href="app.html#" class="nav-drawer-link">
+        <span class="material-symbols-outlined">payments</span> Finance
+      </a>
+      <a href="app.html#" class="nav-drawer-link">
+        <span class="material-symbols-outlined">build</span> Service Log
+      </a>
+      <a href="app.html#" class="nav-drawer-link">
+        <span class="material-symbols-outlined">settings</span> Settings
+      </a>
+    </nav>
+    <div class="nav-drawer-footer">
+      <div style="background:var(--color-surface-high);padding:16px;border-left:4px solid var(--color-accent);">
+        <p style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.2em;color:var(--color-accent);font-family:var(--font-headline);margin-bottom:4px;">Fleet Status</p>
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;">12 ACTIVE UNITS</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ───────────────────────────────────────────────────── -->
+  <main class="match-page">
+
+    <!-- Filter chips -->
+    <div class="filter-bar">
+      <button class="chip active" data-filter="type" data-value="All">All</button>
+      <button class="chip" data-filter="type" data-value="Tractor">Tractor</button>
+      <button class="chip" data-filter="type" data-value="Harvester">Harvester</button>
+      <button class="chip" data-filter="type" data-value="Sprayer">Sprayer</button>
+    </div>
+
+    <!-- Swipe card wrapper -->
+    <div class="swipe-wrapper">
+      <div class="telemetry-chip">
+        <span class="telemetry-text">LIVE TELEMETRY ACTIVE</span>
+      </div>
+
+      <!-- The swipe card (content populated by JS) -->
+      <div class="swipe-card" id="swipe-card">
+
+        <!-- Swipe direction hints -->
+        <div class="swipe-hint swipe-hint-left">PASS</div>
+        <div class="swipe-hint swipe-hint-right">MATCH</div>
+
+        <!-- Machine image -->
+        <div class="machine-img-wrap">
+          <img class="machine-img" src="" alt="">
+          <div class="img-gradient"></div>
+
+          <!-- Overlay content -->
+          <div class="card-overlay">
+            <div class="card-tags">
+              <span class="card-tag card-tag-primary machine-status">AVAILABLE</span>
+              <span class="card-tag card-tag-surface machine-location">QUEENSLAND</span>
+            </div>
+            <h2 class="machine-model">LOADING...</h2>
+            <p class="machine-detail">—</p>
+            <div class="specs-grid">
+              <div>
+                <p class="spec-label spec1-label">Power Output</p>
+                <p class="spec-value spec1-value">—</p>
+              </div>
+              <div>
+                <p class="spec-label spec2-label">Grain Tank</p>
+                <p class="spec-value spec2-value">—</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="match-actions">
+        <button class="btn-icon" id="btn-pass" title="Pass">
+          <span class="material-symbols-outlined" style="font-size:1.8rem;">close</span>
+        </button>
+        <button class="match-btn" id="btn-match">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:1.8rem;">check_circle</span>
+          MATCH
+        </button>
+        <button class="btn-icon btn-icon-primary" title="Info">
+          <span class="material-symbols-outlined" style="font-size:1.8rem;">info</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── PAYMENT MODAL ──────────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="payment-modal">
+    <div class="modal">
+      <h2 class="modal-title">Unlock This Match</h2>
+      <p class="modal-body">
+        To view contact details and connect with this contractor, choose a plan below.
+        The Premium plan gives you unlimited matches for just $10 AUD/month.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <button class="btn btn-primary btn-full" id="btn-modal-subscribe">Go Premium — $10 AUD/mo</button>
+        <button class="btn btn-outline btn-full" id="btn-modal-paylead">Pay-per-lead (Flex)</button>
+        <button class="btn" data-close-modal="payment-modal" style="color:var(--color-text-muted);font-size:0.8rem;">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+  <footer class="site-footer" style="display:none;" id="desktop-footer">
+    <span class="footer-brand">AGROMATCH INDUSTRIAL</span>
+    <p class="footer-copy">© 2025 AGROMATCH INDUSTRIAL. BUILT FOR THE FIELD.</p>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Terms of Service</a>
+      <a href="#" class="footer-link">Privacy Policy</a>
+      <a href="#" class="footer-link">Australia Support</a>
+    </div>
+  </footer>
+
+  <!-- ── BOTTOM NAV (MOBILE) ────────────────────────────────────────────── -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">
+      <span class="material-symbols-outlined">storefront</span>
+      <span class="bottom-nav-label">MARKET</span>
+    </a>
+    <a href="app.html" class="bottom-nav-link active">
+      <span class="material-symbols-outlined">style</span>
+      <span class="bottom-nav-label">MATCH</span>
+    </a>
+    <a href="dashboard.html" class="bottom-nav-link">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="bottom-nav-label">DASHBOARD</span>
+    </a>
+  </nav>
+
+  <!-- ── SCRIPTS ────────────────────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/stripe.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Show desktop footer on md+
+    if (window.matchMedia('(min-width:768px)').matches) {
+      document.getElementById('desktop-footer').style.display = '';
+    }
+  </script>
+</body>
+</html>

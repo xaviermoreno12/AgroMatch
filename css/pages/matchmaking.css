@@ -1,0 +1,245 @@
+/* ===================== MAIN LAYOUT ===================== */
+.match-page {
+  min-height: 100dvh;
+  padding-top: calc(var(--header-height) + 24px);
+  padding-bottom: calc(var(--bottom-nav-height) + 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blobs */
+.match-page::before,
+.match-page::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.match-page::before {
+  top: 20%;
+  left: -80px;
+  background: rgba(54,124,43,0.05);
+}
+.match-page::after {
+  bottom: 20%;
+  right: -80px;
+  background: rgba(253,220,0,0.04);
+}
+
+/* ===================== FILTER BAR ===================== */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ===================== CARD CONTAINER ===================== */
+.swipe-wrapper {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Telemetry chip above card */
+.telemetry-chip {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-surface-high);
+  border-left: 4px solid var(--color-primary-light);
+  padding: 8px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.telemetry-text {
+  font-family: var(--font-headline);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-primary-light);
+}
+
+/* ===================== SWIPE CARD ===================== */
+.swipe-card {
+  background-color: var(--color-surface-lowest);
+  border-top: 4px solid var(--color-primary);
+  box-shadow: 0 40px 60px rgba(0,0,0,0.6);
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  will-change: transform;
+  touch-action: pan-y;
+}
+.swipe-card:active { cursor: grabbing; }
+
+/* Machine image */
+.machine-img-wrap {
+  position: relative;
+  aspect-ratio: 3/4;
+  width: 100%;
+  overflow: hidden;
+}
+.machine-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(15%);
+  transition: transform 700ms ease;
+  pointer-events: none;
+}
+.swipe-card:hover .machine-img { transform: scale(1.05); }
+
+.img-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #131313 0%, transparent 60%);
+  opacity: 0.9;
+}
+
+/* Card content overlay */
+.card-overlay {
+  position: absolute;
+  bottom: 0; left: 0;
+  padding: 32px;
+  width: 100%;
+}
+.card-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.card-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: var(--font-headline);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.card-tag-primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-on-primary);
+}
+.card-tag-surface {
+  background-color: var(--color-surface-high);
+  color: var(--color-text-muted);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.machine-model {
+  font-size: 2.2rem;
+  color: var(--color-text);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  line-height: 1;
+}
+
+.machine-detail {
+  font-family: var(--font-body);
+  color: rgba(255,249,237,0.5);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Specs grid */
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.spec-label {
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: var(--font-headline);
+}
+.spec-value {
+  font-family: var(--font-headline);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* ===================== ACTION BUTTONS ===================== */
+.match-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.match-btn {
+  flex: 1;
+  max-width: 200px;
+  height: 64px;
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-headline);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  font-size: 0.9rem;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 10px 30px rgba(253,220,0,0.2);
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+}
+.match-btn:hover  { background-color: var(--color-accent-dim); }
+.match-btn:active { transform: translateY(4px); box-shadow: none; }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--color-text-muted);
+}
+.empty-state h3 { font-size: 1.5rem; margin-bottom: 12px; }
+.empty-state p  { font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-weight: 400; }
+
+/* ===================== SIDEBAR OFFSET FOR DESKTOP ===================== */
+@media (min-width: 1024px) {
+  .match-page { padding-left: 352px; }
+}
+
+@media (min-width: 768px) {
+  .match-page {
+    padding-bottom: 48px;
+    padding-top: calc(var(--header-height) + 48px);
+    justify-content: center;
+  }
+}

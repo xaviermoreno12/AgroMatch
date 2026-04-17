@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGROMATCH | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Public+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400;0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/dashboard.css">
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="material-symbols-outlined logo-icon">agriculture</span>
+      <span class="logo-text">AGROMATCH</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html"     class="nav-link">MARKET</a>
+      <a href="app.html"       class="nav-link">MATCH</a>
+      <a href="dashboard.html" class="nav-link active">DASHBOARD</a>
+    </nav>
+    <div class="header-actions">
+      <div class="avatar">
+        <span class="material-symbols-outlined">person</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN ───────────────────────────────────────────────────────────── -->
+  <main class="dashboard-main">
+    <div class="dashboard-grid">
+
+      <!-- ── Left column: profile + stats + subscription ── -->
+      <div class="profile-section">
+
+        <!-- Profile card -->
+        <div class="profile-card glass-panel">
+          <div>
+            <span class="profile-role-label">OPERATOR PROFILE</span>
+            <h2 class="profile-name" id="profile-name">J. HARRISON</h2>
+            <p class="profile-sub">Western Australia Fleet Manager</p>
+            <div class="profile-tags">
+              <div class="profile-tag profile-tag-primary">ID: AU-8829-X</div>
+              <div class="profile-tag profile-tag-accent">LVL: PREMIUM</div>
+            </div>
+          </div>
+          <div class="profile-footer">
+            <button class="btn btn-primary" style="padding:12px 24px;font-size:0.8rem;">EDIT PROFILE</button>
+          </div>
+        </div>
+
+        <!-- Stats 2x2 -->
+        <div class="stats-grid">
+          <div class="stat-block">
+            <span class="stat-label">Total Matches</span>
+            <span class="stat-value" id="stat-matches">—</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-label">Active Listings</span>
+            <span class="stat-value" id="stat-listings">—</span>
+          </div>
+          <div class="stat-block stat-block-accent">
+            <span class="stat-label">Uptime %</span>
+            <span class="stat-value stat-value-accent">98.4</span>
+          </div>
+          <div class="stat-block stat-block-accent">
+            <span class="stat-label">Fleet Size</span>
+            <span class="stat-value stat-value-accent" id="stat-fleet">—</span>
+          </div>
+        </div>
+
+        <!-- Subscription banner -->
+        <div class="subscription-banner">
+          <div class="sub-content">
+            <div class="sub-verified-row">
+              <span class="material-symbols-outlined sub-verified-icon" style="font-variation-settings:'FILL' 1;">verified</span>
+              <span class="sub-verified-label">SUBSCRIPTION STATUS</span>
+            </div>
+            <h3 class="sub-title" id="sub-status-text">Premium Active</h3>
+            <p class="sub-description" id="sub-description">
+              Your enterprise license includes priority matching, fleet telemetry overlays, and 24/7 field support.
+            </p>
+          </div>
+          <div class="sub-actions">
+            <button class="btn btn-outline-accent" id="btn-manage-billing">MANAGE BILLING</button>
+          </div>
+          <span class="material-symbols-outlined sub-bg-icon">settings_suggest</span>
+        </div>
+
+      </div>
+
+      <!-- ── Right column: quick actions + fleet health ── -->
+      <aside class="dashboard-sidebar">
+
+        <div class="quick-actions-card">
+          <h4 class="quick-actions-title">Quick Actions</h4>
+          <div class="quick-actions-list">
+            <button class="action-btn">
+              <span>Register New Asset</span>
+              <span class="material-symbols-outlined">add_circle</span>
+            </button>
+            <button class="action-btn">
+              <span>Request Inspection</span>
+              <span class="material-symbols-outlined">engineering</span>
+            </button>
+            <button class="action-btn">
+              <span>Export Fleet Report</span>
+              <span class="material-symbols-outlined">download</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="health-card">
+          <div class="health-header">
+            <span class="health-title">Fleet Health</span>
+            <span class="health-realtime">Real-time</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" style="width: 92%;"></div>
+          </div>
+          <div class="health-status">
+            <div class="health-labels">
+              <span>Optimal Status</span>
+              <span>92%</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ── Matches section (full width) ── -->
+      <section class="matches-section">
+        <div class="matches-header">
+          <h2 class="matches-title">
+            <span class="matches-title-bar"></span>
+            Current Machinery Matches
+          </h2>
+          <a href="app.html" class="matches-view-all">View All Matches</a>
+        </div>
+        <div class="matches-grid" id="matches-grid">
+          <!-- Populated by dashboard.js -->
+          <p style="color:var(--color-text-muted);font-family:var(--font-body);padding:24px 0;">Cargando matches...</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="footer-brand">AGROMATCH</span>
+    <p class="footer-copy">© 2025 AGROMATCH INDUSTRIAL. BUILT FOR THE FIELD.</p>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Terms of Service</a>
+      <a href="#" class="footer-link">Privacy Policy</a>
+      <a href="#" class="footer-link">Australia Support</a>
+    </div>
+  </footer>
+
+  <!-- ── BOTTOM NAV (MOBILE) ────────────────────────────────────────────── -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">
+      <span class="material-symbols-outlined">storefront</span>
+      <span class="bottom-nav-label">MARKET</span>
+    </a>
+    <a href="app.html" class="bottom-nav-link">
+      <span class="material-symbols-outlined">style</span>
+      <span class="bottom-nav-label">MATCH</span>
+    </a>
+    <a href="dashboard.html" class="bottom-nav-link active">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="bottom-nav-label">DASHBOARD</span>
+    </a>
+  </nav>
+
+  <!-- ── SCRIPTS ────────────────────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/stripe.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

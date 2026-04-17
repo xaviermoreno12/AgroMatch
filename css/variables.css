@@ -1,0 +1,45 @@
+:root {
+  /* Background layers */
+  --color-bg: #111111;
+  --color-surface-lowest: #0e0e0e;
+  --color-surface-low: #1c1b1b;
+  --color-surface: #201f1f;
+  --color-surface-high: #2a2a2a;
+  --color-surface-highest: #353534;
+  --color-surface-bright: #3a3939;
+
+  /* Brand — John Deere */
+  --color-primary: #367C2B;
+  --color-primary-light: #8ed97b;
+  --color-primary-fixed: #a9f695;
+  --color-accent: #FFDE00;
+  --color-accent-dim: #e3c600;
+
+  /* Text */
+  --color-text: #e5e2e1;
+  --color-text-muted: #c0c9b9;
+  --color-on-primary: #003a00;
+  --color-on-accent: #393000;
+
+  /* Borders */
+  --color-outline: #8a9484;
+  --color-outline-variant: #41493c;
+
+  /* Status */
+  --color-error: #ffb4ab;
+
+  /* Typography */
+  --font-headline: 'Space Grotesk', sans-serif;
+  --font-body: 'Public Sans', sans-serif;
+
+  /* Layout */
+  --header-height: 80px;
+  --bottom-nav-height: 80px;
+
+  /* Hard-edge brutalism — no rounded corners */
+  --border-radius: 0px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-med: 300ms ease;
+}
