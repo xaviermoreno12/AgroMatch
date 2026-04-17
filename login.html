@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGROMATCH | Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Public+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400;0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/login.css">
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <a href="index.html" class="logo" style="text-decoration:none;">
+      <span class="material-symbols-outlined logo-icon">agriculture</span>
+      <span class="logo-text">AGROMATCH</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">MARKET</a>
+      <a href="app.html"   class="nav-link">MATCH</a>
+      <a href="dashboard.html" class="nav-link">DASHBOARD</a>
+    </nav>
+    <div class="header-actions">
+      <div class="avatar" style="opacity:0;pointer-events:none;">
+        <span class="material-symbols-outlined">person</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── AUTH LAYOUT ────────────────────────────────────────────────────── -->
+  <div class="auth-page">
+
+    <!-- Left: brand panel (desktop only) -->
+    <div class="auth-brand">
+      <img
+        class="auth-brand-img"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6wxshHU4Fu0nRUYvFFhLNvEWqEGx6D2lpikHqefvH1fLu4GTizLO7AfwRvu9FgAsxZocsRNbZXJrfadOJnmNnKyFGjG1erYnU8VnYrqsD02V5RO_PhMGRjZG05eDWx-5PSVSWgXSbhHVDHs-7FAlG3IZc55EmutrAbXSEwUI1EaqpDxJXPBWirjvGMI-bh6ZaxaEUo_neUCHAA1hejgCxkfFNmzUZ7SG_ks02xEkQd6gK-Ipg4lMO6HstRlOA4Wq5yuV73WQ2LvQ"
+        alt="Australian wheat field with John Deere tractor at golden hour"
+      >
+      <div class="auth-brand-overlay"></div>
+      <div class="auth-brand-content">
+        <p class="auth-brand-label">Industrial Machinery Exchange</p>
+        <h2 class="auth-brand-title">Built for<br>the Field.</h2>
+        <p class="auth-brand-sub">
+          Connect with verified operators across Queensland, Western Australia,
+          NSW and Victoria. Match. Deploy. Harvest.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right: auth form -->
+    <div class="auth-form-panel">
+      <div class="auth-form-wrap">
+
+        <!-- Demo mode notice (hidden when Supabase configured) -->
+        <div class="demo-banner" id="demo-banner" style="display:none;">
+          <strong>DEMO MODE</strong> — Supabase not configured. Add your credentials to
+          <code>js/config.js</code> to enable real authentication.
+        </div>
+
+        <!-- Tabs -->
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" id="tab-signin" role="tab" aria-selected="true" aria-controls="panel-signin">
+            Sign In
+          </button>
+          <button class="auth-tab" id="tab-register" role="tab" aria-selected="false" aria-controls="panel-register">
+            Create Account
+          </button>
+        </div>
+
+        <!-- ── SIGN IN PANEL ─────────────────────────────────────────── -->
+        <div id="panel-signin" role="tabpanel" aria-labelledby="tab-signin">
+          <h1 class="auth-title">Welcome back</h1>
+          <p class="auth-subtitle">Enter your credentials to access the platform.</p>
+
+          <form class="auth-form" id="form-signin" novalidate>
+
+            <div class="form-field">
+              <label class="form-label" for="signin-email">Email Address</label>
+              <input
+                class="input"
+                id="signin-email"
+                type="email"
+                name="email"
+                placeholder="operator@agromatch.au"
+                autocomplete="email"
+                required
+              >
+              <span class="field-error" id="signin-email-error">Enter a valid email address.</span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="signin-password">Password</label>
+              <div class="input-wrap">
+                <input
+                  class="input"
+                  id="signin-password"
+                  type="password"
+                  name="password"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                  required
+                  style="padding-right:50px;"
+                >
+                <button type="button" class="toggle-password" aria-label="Toggle password visibility" data-target="signin-password">
+                  <span class="material-symbols-outlined" style="font-size:1.2rem;">visibility</span>
+                </button>
+              </div>
+              <span class="field-error" id="signin-pass-error">Password is required.</span>
+            </div>
+
+            <button type="submit" class="btn-auth" id="btn-signin">
+              <span class="material-symbols-outlined">login</span>
+              Sign In
+            </button>
+
+          </form>
+
+          <div class="auth-divider" style="margin-top:24px;">
+            <span class="auth-divider-text">or continue with</span>
+          </div>
+
+          <button class="btn-google" id="btn-google-signin" type="button" aria-label="Continue with Google">
+            <!-- Google G logo SVG -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </button>
+
+          <p class="auth-footer-note">
+            By signing in you agree to our
+            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+          </p>
+        </div>
+
+        <!-- ── REGISTER PANEL ────────────────────────────────────────── -->
+        <div id="panel-register" role="tabpanel" aria-labelledby="tab-register" style="display:none;">
+          <h1 class="auth-title">Join the fleet</h1>
+          <p class="auth-subtitle">Create your operator account. No email confirmation required.</p>
+
+          <form class="auth-form" id="form-register" novalidate>
+
+            <div class="form-field">
+              <label class="form-label" for="reg-name">Full Name</label>
+              <input
+                class="input"
+                id="reg-name"
+                type="text"
+                name="fullName"
+                placeholder="J. Harrison"
+                autocomplete="name"
+                required
+              >
+              <span class="field-error" id="reg-name-error">Full name is required.</span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="reg-email">Email Address</label>
+              <input
+                class="input"
+                id="reg-email"
+                type="email"
+                name="email"
+                placeholder="operator@agromatch.au"
+                autocomplete="email"
+                required
+              >
+              <span class="field-error" id="reg-email-error">Enter a valid email address.</span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="reg-password">Password</label>
+              <div class="input-wrap">
+                <input
+                  class="input"
+                  id="reg-password"
+                  type="password"
+                  name="password"
+                  placeholder="Minimum 8 characters"
+                  autocomplete="new-password"
+                  required
+                  minlength="8"
+                  style="padding-right:50px;"
+                >
+                <button type="button" class="toggle-password" aria-label="Toggle password visibility" data-target="reg-password">
+                  <span class="material-symbols-outlined" style="font-size:1.2rem;">visibility</span>
+                </button>
+              </div>
+              <span class="field-error" id="reg-pass-error">Password must be at least 8 characters.</span>
+            </div>
+
+            <!-- Contractor toggle -->
+            <label class="contractor-row" for="reg-contractor">
+              <input type="checkbox" id="reg-contractor" name="isContractor">
+              <div>
+                <p class="contractor-label">I'm a Contractor</p>
+                <p class="contractor-desc">I hire machinery from fleet owners</p>
+              </div>
+            </label>
+
+            <button type="submit" class="btn-auth" id="btn-register">
+              <span class="material-symbols-outlined">person_add</span>
+              Create Account
+            </button>
+
+          </form>
+
+          <div class="auth-divider" style="margin-top:24px;">
+            <span class="auth-divider-text">or continue with</span>
+          </div>
+
+          <button class="btn-google" id="btn-google-register" type="button" aria-label="Continue with Google">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </button>
+
+          <p class="auth-footer-note">
+            By creating an account you agree to our
+            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCRIPTS ────────────────────────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Show demo banner if not configured
+    if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
+      document.getElementById('demo-banner').style.display = 'block';
+    }
+
+    // ── Tab switching ────────────────────────────────────────────────────
+    const tabSignin   = document.getElementById('tab-signin');
+    const tabRegister = document.getElementById('tab-register');
+    const panelSignin = document.getElementById('panel-signin');
+    const panelReg    = document.getElementById('panel-register');
+
+    tabSignin.addEventListener('click', () => {
+      tabSignin.classList.add('active');   tabSignin.setAttribute('aria-selected','true');
+      tabRegister.classList.remove('active'); tabRegister.setAttribute('aria-selected','false');
+      panelSignin.style.display = '';
+      panelReg.style.display    = 'none';
+    });
+    tabRegister.addEventListener('click', () => {
+      tabRegister.classList.add('active');  tabRegister.setAttribute('aria-selected','true');
+      tabSignin.classList.remove('active'); tabSignin.setAttribute('aria-selected','false');
+      panelReg.style.display    = '';
+      panelSignin.style.display = 'none';
+    });
+
+    // ── Password toggle ──────────────────────────────────────────────────
+    document.querySelectorAll('.toggle-password').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = document.getElementById(btn.dataset.target);
+        const icon  = btn.querySelector('.material-symbols-outlined');
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.textContent = 'visibility_off';
+        } else {
+          input.type = 'password';
+          icon.textContent = 'visibility';
+        }
+      });
+    });
+
+    // ── Validation helpers ───────────────────────────────────────────────
+    function showError(id, show) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('visible', show);
+    }
+    function setLoading(btn, loading) {
+      btn.disabled = loading;
+      btn.innerHTML = loading
+        ? '<span class="material-symbols-outlined" style="animation:spin 1s linear infinite">progress_activity</span> Please wait…'
+        : btn.dataset.original;
+    }
+
+    // Store original button text
+    document.querySelectorAll('.btn-auth').forEach(b => {
+      b.dataset.original = b.innerHTML;
+    });
+
+    // ── Sign In form ─────────────────────────────────────────────────────
+    document.getElementById('form-signin').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email    = document.getElementById('signin-email').value.trim();
+      const password = document.getElementById('signin-password').value;
+      let valid = true;
+
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      showError('signin-email-error', !emailOk);
+      if (!emailOk) { valid = false; document.getElementById('signin-email').classList.add('error'); }
+      else { document.getElementById('signin-email').classList.remove('error'); }
+
+      if (!password) { showError('signin-pass-error', true); valid = false; }
+      else            { showError('signin-pass-error', false); }
+
+      if (!valid) return;
+
+      const btn = document.getElementById('btn-signin');
+      setLoading(btn, true);
+
+      const result = await window.Auth.signIn(email, password);
+      setLoading(btn, false);
+
+      if (result?.error) {
+        window.AgroMatch?.showToast('Incorrect email or password.', 'error');
+        showError('signin-pass-error', true);
+        document.getElementById('signin-pass-error').textContent = result.error.message || 'Incorrect credentials.';
+      } else {
+        window.location.href = 'app.html';
+      }
+    });
+
+    // ── Register form ────────────────────────────────────────────────────
+    document.getElementById('form-register').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name     = document.getElementById('reg-name').value.trim();
+      const email    = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-password').value;
+      const isCont   = document.getElementById('reg-contractor').checked;
+      let valid = true;
+
+      if (!name) { showError('reg-name-error', true); valid = false; }
+      else         showError('reg-name-error', false);
+
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      showError('reg-email-error', !emailOk);
+      if (!emailOk) valid = false;
+
+      if (password.length < 8) { showError('reg-pass-error', true); valid = false; }
+      else                       showError('reg-pass-error', false);
+
+      if (!valid) return;
+
+      const btn = document.getElementById('btn-register');
+      setLoading(btn, true);
+
+      const result = await window.Auth.signUp(email, password, name, isCont);
+      setLoading(btn, false);
+
+      if (result?.error) {
+        window.AgroMatch?.showToast(result.error.message || 'Registration failed.', 'error');
+      } else {
+        window.AgroMatch?.showToast('Account created! Welcome to AgroMatch.', 'success');
+        setTimeout(() => { window.location.href = 'app.html'; }, 1200);
+      }
+    });
+
+    // ── Google OAuth ─────────────────────────────────────────────────────
+    document.getElementById('btn-google-signin').addEventListener('click', () => window.Auth.signInWithGoogle());
+    document.getElementById('btn-google-register').addEventListener('click', () => window.Auth.signInWithGoogle());
+
+    // ── OAuth callback (when redirected back from Google) ────────────────
+    window.Auth.handleOAuthCallback?.();
+  </script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</body>
+</html>

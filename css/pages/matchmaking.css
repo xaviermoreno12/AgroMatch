@@ -188,39 +188,88 @@
   font-weight: 700;
 }
 
-/* ===================== ACTION BUTTONS ===================== */
+/* ===================== 3-ACTION BUTTONS ===================== */
 .match-actions {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
-  margin-top: 32px;
+  gap: 12px;
+  margin-top: 28px;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 420px;
 }
 
-.match-btn {
+.swipe-action-btn {
   flex: 1;
-  max-width: 200px;
-  height: 64px;
-  background-color: var(--color-accent);
-  color: var(--color-on-accent);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
+  padding: 16px 8px;
   font-family: var(--font-headline);
   font-weight: 900;
-  letter-spacing: 0.2em;
-  font-size: 0.9rem;
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
-  box-shadow: 0 10px 30px rgba(253,220,0,0.2);
-  cursor: pointer;
-  border: none;
+  font-size: 9px;
   text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  min-height: 72px;
 }
-.match-btn:hover  { background-color: var(--color-accent-dim); }
-.match-btn:active { transform: translateY(4px); box-shadow: none; }
+.swipe-action-btn .material-symbols-outlined {
+  font-size: 1.6rem;
+}
+.swipe-action-label {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+.swipe-action-btn:active { transform: translateY(3px); }
+
+/* Reject (left/red) */
+.swipe-action-reject {
+  background-color: rgba(255,180,171,0.08);
+  border-color: rgba(255,180,171,0.3);
+  color: var(--color-error);
+}
+.swipe-action-reject:hover {
+  background-color: rgba(255,180,171,0.15);
+  border-color: var(--color-error);
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 rgba(255,180,171,0.2);
+}
+
+/* Match (center/yellow — primary CTA) */
+.swipe-action-match {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  border-color: var(--color-accent);
+  flex: 1.4;
+  box-shadow: 0 8px 24px rgba(255,222,0,0.2);
+  min-height: 80px;
+  font-size: 11px;
+}
+.swipe-action-match .material-symbols-outlined { font-size: 1.9rem; }
+.swipe-action-match:hover {
+  background-color: var(--color-accent-dim);
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--color-primary);
+}
+
+/* Skip (right/neutral) */
+.swipe-action-skip {
+  background-color: var(--color-surface-high);
+  border-color: var(--color-outline-variant);
+  color: var(--color-text-muted);
+}
+.swipe-action-skip:hover {
+  background-color: var(--color-surface-highest);
+  border-color: var(--color-outline);
+  color: var(--color-text);
+}
 
 /* Empty state */
 .empty-state {

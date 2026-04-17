@@ -106,6 +106,18 @@ window.SupabaseAPI = {
     return data || [];
   },
 
+  async createRejection(machineId) {
+    if (!_client) {
+      console.log('[Mock] Rejection for machine:', machineId);
+      return;
+    }
+    const user = await this.getUser();
+    if (!user) return;
+    await _client
+      .from('matches')
+      .insert({ contractor_id: user.id, machine_id: machineId, status: 'rejected' });
+  },
+
   async addMachinery(machineData) {
     if (!_client) return null;
     const user = await this.getUser();

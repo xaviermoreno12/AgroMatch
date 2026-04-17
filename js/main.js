@@ -9,11 +9,11 @@ window.AgroMatch = (() => {
     toast.className = 'ag-toast';
     toast.style.cssText = `
       position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
-      background: ${type === 'success' ? 'var(--color-primary)' : 'var(--color-surface-high)'};
+      background: ${type === 'success' ? 'var(--color-primary)' : type === 'error' ? '#7a1a14' : 'var(--color-surface-high)'};
       color: #fff; padding: 14px 28px;
       font-family: var(--font-headline); font-weight: 700; font-size: 13px;
       text-transform: uppercase; letter-spacing: 0.1em;
-      z-index: 300; border-left: 4px solid var(--color-accent);
+      z-index: 300; border-left: 4px solid ${type === 'error' ? 'var(--color-error)' : 'var(--color-accent)'};
       animation: slideUp 0.3s ease; white-space: nowrap;
     `;
     toast.textContent = message;

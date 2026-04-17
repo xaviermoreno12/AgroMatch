@@ -12,17 +12,15 @@ window.Swipe = (() => {
     const card = getCard();
     if (!card) return;
 
-    // Reset position/opacity smoothly
     card.style.transition = '';
-    card.style.transform = 'translateX(0) rotate(0deg)';
-    card.style.opacity = '1';
+    card.style.transform  = 'translateX(0) rotate(0deg)';
+    card.style.opacity    = '1';
 
     card.querySelector('.machine-img').src    = machine.image_url || '';
     card.querySelector('.machine-img').alt    = machine.model;
     card.querySelector('.machine-model').textContent  = machine.model;
-    card.querySelector('.machine-detail').textContent = machine.spec1_label
-      ? `${machine.type?.toUpperCase()} • ${machine.status?.toUpperCase() || 'AVAILABLE'}`
-      : machine.detail || machine.type?.toUpperCase();
+    card.querySelector('.machine-detail').textContent =
+      `${machine.type?.toUpperCase()} • ${machine.status?.toUpperCase() || 'AVAILABLE'}`;
     card.querySelector('.machine-location').textContent = machine.location;
     card.querySelector('.machine-status').textContent   = machine.status?.toUpperCase() || 'AVAILABLE';
     card.querySelector('.spec1-label').textContent = machine.spec1_label || 'Power';
@@ -30,10 +28,8 @@ window.Swipe = (() => {
     card.querySelector('.spec2-label').textContent = machine.spec2_label || 'Daily Rate';
     card.querySelector('.spec2-value').textContent = machine.spec2_value || `$${machine.daily_rate} AUD`;
 
-    // Store machine id on card for match creation
     card.dataset.machineId = machine.id;
 
-    // Hide hints
     card.querySelector('.swipe-hint-left').style.opacity  = '0';
     card.querySelector('.swipe-hint-right').style.opacity = '0';
   }
@@ -64,12 +60,12 @@ window.Swipe = (() => {
     setTimeout(() => { if (card) card.style.transition = ''; }, 400);
   }
 
-  async function swipeRight() {
+  // ── MATCH: creates a pending match record, requires subscription ───────
+  async function match() {
     const card = getCard();
     if (!card) return;
     const machineId = card.dataset.machineId;
 
-    // Gate: check subscription
     const profile = await window.SupabaseAPI.getProfile();
     if (!profile?.subscription_active) {
       resetCard();
@@ -82,17 +78,37 @@ window.Swipe = (() => {
     card.style.opacity    = '0';
 
     await window.SupabaseAPI.createMatch(machineId);
-    window.AgroMatch?.showToast('¡Match creado! 🤝', 'success');
+    window.AgroMatch?.showToast('Match created! The operator will contact you.', 'success');
     setTimeout(nextCard, 350);
   }
 
-  function swipeLeft() {
+  // ── RECHAZADO: records rejection, animates left ────────────────────────
+  async function reject() {
     const card = getCard();
     if (!card) return;
+    const machineId = card.dataset.machineId;
+
     card.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
     card.style.transform  = 'translateX(-160%) rotate(-30deg)';
     card.style.opacity    = '0';
+
+    await window.SupabaseAPI.createRejection(machineId);
+    window.AgroMatch?.showToast('Marked as not interested.', 'info');
     setTimeout(nextCard, 350);
+  }
+
+  // ── OMITIR: just moves to next, no record ─────────────────────────────
+  function skip() {
+    const card = getCard();
+    if (!card) return;
+
+    card.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+    card.style.transform  = 'translateY(-20px) scale(0.95)';
+    card.style.opacity    = '0';
+    setTimeout(() => {
+      nextCard();
+      window.AgroMatch?.showToast('Skipped — you can come back later.', 'info');
+    }, 300);
   }
 
   function nextCard() {
@@ -101,7 +117,7 @@ window.Swipe = (() => {
     renderCard(machines[currentIndex]);
   }
 
-  // ── Pointer/mouse events ──────────────────────────────────────────────────
+  // ── Pointer/mouse events ──────────────────────────────────────────────
   function onPointerDown(e) {
     isDragging = true;
     startX = e.clientX;
@@ -116,12 +132,12 @@ window.Swipe = (() => {
   function onPointerUp() {
     if (!isDragging) return;
     isDragging = false;
-    if (currentX > SWIPE_THRESHOLD)       swipeRight();
-    else if (currentX < -SWIPE_THRESHOLD) swipeLeft();
+    if (currentX > SWIPE_THRESHOLD)       match();
+    else if (currentX < -SWIPE_THRESHOLD) reject();
     else                                  resetCard();
   }
 
-  // ── Touch events ─────────────────────────────────────────────────────────
+  // ── Touch events ──────────────────────────────────────────────────────
   function onTouchStart(e) {
     isDragging = true;
     startX = e.touches[0].clientX;
@@ -130,14 +146,14 @@ window.Swipe = (() => {
   function onTouchMove(e) {
     if (!isDragging) return;
     currentX = e.touches[0].clientX - startX;
-    if (Math.abs(currentX) > 8) e.preventDefault(); // allow vertical scroll unless clearly horizontal
+    if (Math.abs(currentX) > 8) e.preventDefault();
     applyTransform(currentX);
   }
   function onTouchEnd() {
     if (!isDragging) return;
     isDragging = false;
-    if (currentX > SWIPE_THRESHOLD)       swipeRight();
-    else if (currentX < -SWIPE_THRESHOLD) swipeLeft();
+    if (currentX > SWIPE_THRESHOLD)       match();
+    else if (currentX < -SWIPE_THRESHOLD) reject();
     else                                  resetCard();
   }
 
@@ -145,29 +161,24 @@ window.Swipe = (() => {
     const card = getCard();
     if (!card) return;
 
-    // Load machines
     machines = await window.SupabaseAPI.loadMachinery();
     if (!machines.length) return;
     currentIndex = 0;
     renderCard(machines[0]);
 
-    // Pointer events (handles mouse + pen)
-    card.addEventListener('pointerdown', onPointerDown);
-    card.addEventListener('pointermove', onPointerMove);
-    card.addEventListener('pointerup',   onPointerUp);
+    card.addEventListener('pointerdown',   onPointerDown);
+    card.addEventListener('pointermove',   onPointerMove);
+    card.addEventListener('pointerup',     onPointerUp);
     card.addEventListener('pointercancel', onPointerUp);
 
-    // Touch events (mobile fallback)
     card.addEventListener('touchstart', onTouchStart, { passive: true });
     card.addEventListener('touchmove',  onTouchMove,  { passive: false });
     card.addEventListener('touchend',   onTouchEnd);
 
-    // Button actions
-    document.getElementById('btn-pass')?.addEventListener('click', swipeLeft);
-    document.getElementById('btn-match')?.addEventListener('click', swipeRight);
+    document.getElementById('btn-reject')?.addEventListener('click', reject);
+    document.getElementById('btn-match')?.addEventListener('click', match);
+    document.getElementById('btn-skip')?.addEventListener('click', skip);
   }
-
-  return { init, swipeLeft, swipeRight, reloadWithFilter };
 
   async function reloadWithFilter(filters) {
     machines = await window.SupabaseAPI.loadMachinery(filters);
@@ -175,4 +186,6 @@ window.Swipe = (() => {
     currentIndex = 0;
     renderCard(machines[0]);
   }
+
+  return { init, match, reject, skip, reloadWithFilter };
 })();

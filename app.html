@@ -28,8 +28,9 @@
       <a href="dashboard.html" class="nav-link">DASHBOARD</a>
     </nav>
     <div class="header-actions">
-      <div class="avatar">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1UFGFGkVXo7VUcEC1IpnyuBd3UM7V8sjBRvP-bKQKzwq0MnIhiHf9MFzPmd1i07saZ91jc27jNYS9WOXPKJrhOHnagdW-GSwcRx-cQOAHgqpayEcMYTSgGgkhwCaHOnFi-N2T41msM3ZEa6a1G2dYUZ7L4sk96xZFFOxkWGfOhen78U74It-KouM56ztQ0bOW9q7CayjJ8_gjKtWj35Ef8PfhTUYou5WGPXu0W5ZjxrtFk5y17SLWy_XT4IKNeyNyKf0OiB6U0FE" alt="User avatar">
+      <a href="login.html" class="nav-link" id="btn-login-nav" style="font-size:11px;">SIGN IN</a>
+      <div class="avatar" id="user-avatar" style="display:none;">
+        <span class="material-symbols-outlined">person</span>
       </div>
     </div>
   </header>
@@ -90,7 +91,7 @@
       <div class="swipe-card" id="swipe-card">
 
         <!-- Swipe direction hints -->
-        <div class="swipe-hint swipe-hint-left">PASS</div>
+        <div class="swipe-hint swipe-hint-left">RECHAZADO</div>
         <div class="swipe-hint swipe-hint-right">MATCH</div>
 
         <!-- Machine image -->
@@ -120,17 +121,19 @@
         </div>
       </div>
 
-      <!-- Action buttons -->
+      <!-- Action buttons: 3-action model -->
       <div class="match-actions">
-        <button class="btn-icon" id="btn-pass" title="Pass">
-          <span class="material-symbols-outlined" style="font-size:1.8rem;">close</span>
+        <button class="swipe-action-btn swipe-action-reject" id="btn-reject" title="Rechazado — no me interesa">
+          <span class="material-symbols-outlined">thumb_down</span>
+          <span class="swipe-action-label">RECHAZADO</span>
         </button>
-        <button class="match-btn" id="btn-match">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:1.8rem;">check_circle</span>
-          MATCH
+        <button class="swipe-action-btn swipe-action-match" id="btn-match" title="Match — quiero este equipo">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">handshake</span>
+          <span class="swipe-action-label">MATCH</span>
         </button>
-        <button class="btn-icon btn-icon-primary" title="Info">
-          <span class="material-symbols-outlined" style="font-size:1.8rem;">info</span>
+        <button class="swipe-action-btn swipe-action-skip" id="btn-skip" title="Omitir — ver después">
+          <span class="material-symbols-outlined">skip_next</span>
+          <span class="swipe-action-label">OMITIR</span>
         </button>
       </div>
     </div>
