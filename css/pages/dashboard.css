@@ -32,10 +32,10 @@
   min-height: 240px;
 }
 .profile-role-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: var(--color-primary-light);
   margin-bottom: 8px;
   font-family: var(--font-headline);
@@ -60,10 +60,10 @@
 .profile-tag {
   padding: 6px 12px;
   background-color: var(--color-surface-highest);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
   font-family: var(--font-headline);
 }
 .profile-tag-primary { border-left: 4px solid var(--color-primary-light); }
@@ -104,10 +104,10 @@
 }
 .sub-verified-icon { color: var(--color-accent); }
 .sub-verified-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: rgba(202,255,185,0.9);
   font-family: var(--font-headline);
 }
@@ -170,15 +170,15 @@
   margin-bottom: 16px;
 }
 .health-title {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: var(--color-primary-light);
   font-family: var(--font-headline);
 }
 .health-realtime {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--color-text-muted);
@@ -188,7 +188,7 @@
 .health-labels {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
   font-family: var(--font-headline);

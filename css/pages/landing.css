@@ -202,10 +202,10 @@
   color: var(--color-on-accent);
   padding: 8px 24px;
   font-family: var(--font-headline);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
 }
 
 .pricing-card h3 { font-size: 1.8rem; margin-bottom: 8px; }

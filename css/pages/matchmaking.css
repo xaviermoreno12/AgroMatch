@@ -72,10 +72,10 @@
 }
 .telemetry-text {
   font-family: var(--font-headline);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: var(--color-primary-light);
 }
 
@@ -132,10 +132,10 @@
   display: inline-block;
   padding: 4px 12px;
   font-family: var(--font-headline);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
 }
 .card-tag-primary {
   background-color: var(--color-primary-light);
@@ -174,11 +174,11 @@
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 .spec-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   color: var(--color-primary-light);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   font-family: var(--font-headline);
 }
 .spec-value {
@@ -211,11 +211,12 @@
   padding: 16px 8px;
   font-family: var(--font-headline);
   font-weight: 900;
-  font-size: 9px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   border: 2px solid transparent;
   cursor: pointer;
+  touch-action: manipulation;
   transition: background-color var(--transition-fast), color var(--transition-fast),
               border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   min-height: 72px;
@@ -224,10 +225,14 @@
   font-size: 1.6rem;
 }
 .swipe-action-label {
-  font-size: 9px;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
 }
 .swipe-action-btn:active { transform: translateY(3px); }
+.swipe-action-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
 
 /* Reject (left/red) */
 .swipe-action-reject {

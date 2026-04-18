@@ -341,10 +341,6 @@
       }
     });
 
-    // ── Google OAuth ─────────────────────────────────────────────────────
-    document.getElementById('btn-google-signin').addEventListener('click', () => window.Auth.signInWithGoogle());
-    document.getElementById('btn-google-register').addEventListener('click', () => window.Auth.signInWithGoogle());
-
     // ── OAuth callback (when redirected back from Google) ────────────────
     window.Auth.handleOAuthCallback?.();
   </script>
