@@ -1,7 +1,7 @@
 // ── Supabase ──────────────────────────────────────────────────────────────────
 // Replace these with your actual values from https://supabase.com → Project Settings → API
-const SUPABASE_URL      = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL      = 'https://wegirdkhskwhndnakkyi.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlZ2lyZGtoc2t3aG5kbmFra3lpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY1MDEzMzgsImV4cCI6MjA5MjA3NzMzOH0.9HofuOL-4s0eC7f8VtDX5u3wx_QT8cNqxFPq659DclU';
 
 // ── Stripe Payment Links ───────────────────────────────────────────────────────
 // Create these in Stripe Dashboard → Payment Links
